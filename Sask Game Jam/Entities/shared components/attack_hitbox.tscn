@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://ccm324tn84bu"]
+
+[node name="Attack_Hitbox" type="Area2D"]
