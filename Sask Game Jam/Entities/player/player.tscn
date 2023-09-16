@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dupqmjd8nnn8c"]
+[gd_scene load_steps=8 format=3 uid="uid://dupqmjd8nnn8c"]
 
 [ext_resource type="Script" path="res://Entities/player/player components/player_move.gd" id="1_wdfkr"]
 [ext_resource type="Texture2D" uid="uid://uc1up7h8m3g1" path="res://icon.svg" id="2_t4ska"]
 [ext_resource type="PackedScene" uid="uid://ccm324tn84bu" path="res://Entities/shared components/attack_hitbox.tscn" id="3_5icqw"]
+[ext_resource type="PackedScene" uid="uid://bvd0oq5mpibsi" path="res://Entities/shared components/health.tscn" id="4_tphql"]
+[ext_resource type="Script" path="res://Entities/player/Score Manager.gd" id="4_wslj7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yihr8"]
-size = Vector2(134, 132)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ad27w"]
+radius = 64.4981
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj5s5"]
 size = Vector2(261, 20)
@@ -17,7 +19,7 @@ script = ExtResource("1_wdfkr")
 texture = ExtResource("2_t4ska")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_yihr8")
+shape = SubResource("CircleShape2D_ad27w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -26,5 +28,29 @@ shape = SubResource("RectangleShape2D_yihr8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Hitbox"]
 position = Vector2(249.5, -25)
 shape = SubResource("RectangleShape2D_hj5s5")
+disabled = true
 
 [node name="Attack_manager" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health" parent="UI" instance=ExtResource("4_tphql")]
+debug = true
+bar_visible = true
+
+[node name="Score Manager" type="Node" parent="UI"]
+script = ExtResource("4_wslj7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Score Manager"]
+offset_left = 56.0
+offset_top = 24.0
+offset_right = 214.0
+offset_bottom = 112.0
+theme_override_font_sizes/normal_font_size = 40
+text = "0
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="health_zero" from="UI/Health" to="." method="_on_health_health_zero"]

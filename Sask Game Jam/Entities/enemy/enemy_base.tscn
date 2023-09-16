@@ -1,26 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://8d05ffo6vcr7"]
+[gd_scene load_steps=7 format=3 uid="uid://ba0u8kmnqu8vw"]
 
-[ext_resource type="Texture2D" uid="uid://uc1up7h8m3g1" path="res://icon.svg" id="1_ha7ry"]
 [ext_resource type="Script" path="res://Entities/enemy/enemy components/enemy_move.gd" id="1_hevyo"]
-[ext_resource type="PackedScene" uid="uid://6psdmc8ke1bi" path="res://Entities/enemy/enemy components/detection_area.tscn" id="3_hinkx"]
+[ext_resource type="Texture2D" uid="uid://dkk1r0vrxqg1a" path="res://Entities/enemy/spider01.png" id="2_xp3ci"]
+[ext_resource type="Animation" uid="uid://bfjb3yedcwnnd" path="res://Entities/enemy/enemy components/animations/attack.res" id="3_rhbff"]
+[ext_resource type="Animation" uid="uid://cu3r3isqvicne" path="res://Entities/enemy/enemy components/animations/walk.res" id="4_1msy0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l6q1"]
-size = Vector2(126, 120)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh7mx"]
+radius = 64.4981
 
-[node name="Enemy_base" type="CharacterBody2D"]
-collision_layer = 2
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfdlu"]
+_data = {
+"attack": ExtResource("3_rhbff"),
+"walk": ExtResource("4_1msy0")
+}
+
+[node name="Enemy_base" type="CharacterBody2D" groups=["enemy"]]
+collision_priority = 2.0
 script = ExtResource("1_hevyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.14902, 0.337255, 1)
-texture = ExtResource("1_ha7ry")
-flip_v = true
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("2_xp3ci")
+hframes = 10
+vframes = 5
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8l6q1")
+shape = SubResource("CircleShape2D_vh7mx")
 
-[node name="Detection Area" parent="." groups=["enemy"] instance=ExtResource("3_hinkx")]
-collision_layer = 2
-
-[connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nfdlu")
+}

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbecxuoi51enm"]
+[gd_scene load_steps=7 format=3 uid="uid://cbecxuoi51enm"]
 
 [ext_resource type="Texture2D" uid="uid://uc1up7h8m3g1" path="res://icon.svg" id="1_8aorp"]
 [ext_resource type="PackedScene" uid="uid://dupqmjd8nnn8c" path="res://Entities/player/player.tscn" id="2_64i2y"]
 [ext_resource type="PackedScene" uid="uid://8d05ffo6vcr7" path="res://Entities/enemy/enemy_base.tscn" id="3_80qhr"]
+[ext_resource type="PackedScene" uid="uid://bqoc152wbgegu" path="res://Levels/Level_Parts/score_zone.tscn" id="4_4xpuy"]
+[ext_resource type="PackedScene" path="res://Entities/enemy_base.tscn" id="5_1d2bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itulv"]
 size = Vector2(116.364, 126.4)
@@ -27,8 +29,13 @@ position = Vector2(1387, 382)
 scale = Vector2(1.20313, 10)
 shape = SubResource("RectangleShape2D_itulv")
 
+[node name="Score Zone" parent="." instance=ExtResource("4_4xpuy")]
+
 [node name="Enemy_base" parent="." instance=ExtResource("3_80qhr")]
-position = Vector2(325, 86)
+position = Vector2(354, 152)
 
 [node name="Player" parent="." instance=ExtResource("2_64i2y")]
 position = Vector2(-634, -164)
+
+[node name="Enemy_base2" parent="." instance=ExtResource("5_1d2bb")]
+position = Vector2(-225, 205)

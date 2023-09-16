@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://6psdmc8ke1bi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gs7fv"]
-radius = 306.002
+radius = 2641.73
 
 [node name="Detection Area" type="Area2D"]
 
