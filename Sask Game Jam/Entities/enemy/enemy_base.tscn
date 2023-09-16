@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://8d05ffo6vcr7"]
+[gd_scene load_steps=4 format=3 uid="uid://8d05ffo6vcr7"]
 
 [ext_resource type="Texture2D" uid="uid://uc1up7h8m3g1" path="res://icon.svg" id="1_ha7ry"]
 [ext_resource type="Script" path="res://Entities/enemy/enemy components/enemy_move.gd" id="1_hevyo"]
-[ext_resource type="PackedScene" uid="uid://6psdmc8ke1bi" path="res://Entities/enemy/enemy components/detection_area.tscn" id="3_hinkx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l6q1"]
 size = Vector2(126, 120)
 
-[node name="Enemy_base" type="CharacterBody2D"]
+[node name="Enemy_base" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_hevyo")
 
@@ -18,9 +17,3 @@ flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8l6q1")
-
-[node name="Detection Area" parent="." groups=["enemy"] instance=ExtResource("3_hinkx")]
-collision_layer = 2
-
-[connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]
