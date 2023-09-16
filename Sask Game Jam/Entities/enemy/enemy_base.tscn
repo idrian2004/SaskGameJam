@@ -1,17 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba0u8kmnqu8vw"]
+[gd_scene load_steps=7 format=3 uid="uid://sn2w66g5axo7"]
 
 [ext_resource type="Script" path="res://Entities/enemy/enemy components/enemy_move.gd" id="1_hevyo"]
-[ext_resource type="Texture2D" uid="uid://dkk1r0vrxqg1a" path="res://Entities/enemy/spider01.png" id="2_xp3ci"]
-[ext_resource type="Animation" uid="uid://bfjb3yedcwnnd" path="res://Entities/enemy/enemy components/animations/attack.res" id="3_rhbff"]
-[ext_resource type="Animation" uid="uid://cu3r3isqvicne" path="res://Entities/enemy/enemy components/animations/walk.res" id="4_1msy0"]
+[ext_resource type="Texture2D" uid="uid://dkk1r0vrxqg1a" path="res://Entities/enemy/spider01.png" id="2_ey1bl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vh7mx"]
-radius = 64.4981
+[sub_resource type="CircleShape2D" id="CircleShape2D_ck7n7"]
+radius = 55.0273
+
+[sub_resource type="Animation" id="Animation_m4lyj"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_shvm4"]
+resource_name = "walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nfdlu"]
 _data = {
-"attack": ExtResource("3_rhbff"),
-"walk": ExtResource("4_1msy0")
+"attack": SubResource("Animation_m4lyj"),
+"walk": SubResource("Animation_shvm4")
 }
 
 [node name="Enemy_base" type="CharacterBody2D" groups=["enemy"]]
@@ -21,13 +51,13 @@ script = ExtResource("1_hevyo")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(3, 3)
-texture = ExtResource("2_xp3ci")
+texture = ExtResource("2_ey1bl")
 hframes = 10
 vframes = 5
-frame = 5
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vh7mx")
+shape = SubResource("CircleShape2D_ck7n7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
