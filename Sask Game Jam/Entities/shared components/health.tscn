@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7g8eo1u6myeg"]
+
+[sub_resource type="GDScript" id="GDScript_t4vtp"]
+script/source = "extends Node
+
+var max_health = 100
+var health = max_health
+const DAMAGE_AMOUNT = 1
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	update_health_bar()
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Input.is_action_pressed(\"damage_player\"):
+		take_damage(1)
+	
+	if health <= 0:
+# Player has died
+		get_tree().reload_current_scene()
+		
+# Update Health Bar value
+func update_health_bar():
+	$Hbar.value = health
+
+
+
+# Function for entity taking damage
+func take_damage(damage):
+	health -= damage
+	if health <= 0:
+		health = 0
+	update_health_bar()
+
+	
+func gain_health(hp):
+	health += hp
+	if health >= max_health:
+		health = max_health
+	update_health_bar()
+	
+
+
+
+"
+
+[sub_resource type="Gradient" id="Gradient_lblkf"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.443137, 0.443137, 0.443137, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3i7y"]
+gradient = SubResource("Gradient_lblkf")
+width = 250
+height = 25
+fill = 2
+
+[sub_resource type="Gradient" id="Gradient_8fc6j"]
+offsets = PackedFloat32Array(0, 0.278571, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.537255, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ktdi"]
+gradient = SubResource("Gradient_8fc6j")
+width = 250
+height = 25
+
+[node name="Health" type="Node"]
+script = SubResource("GDScript_t4vtp")
+
+[node name="Hbar" type="TextureProgressBar" parent="."]
+offset_left = 855.0
+offset_top = 600.0
+offset_right = 1105.0
+offset_bottom = 625.0
+scale = Vector2(0.85, 0.85)
+value = 50.0
+texture_under = SubResource("GradientTexture2D_i3i7y")
+texture_progress = SubResource("GradientTexture2D_8ktdi")
