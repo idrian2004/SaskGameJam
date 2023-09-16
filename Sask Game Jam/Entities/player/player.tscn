@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dupqmjd8nnn8c"]
+[gd_scene load_steps=8 format=3 uid="uid://dupqmjd8nnn8c"]
 
 [ext_resource type="Script" path="res://Entities/player/player components/player_move.gd" id="1_wdfkr"]
 [ext_resource type="Texture2D" uid="uid://uc1up7h8m3g1" path="res://icon.svg" id="2_t4ska"]
 [ext_resource type="PackedScene" uid="uid://ccm324tn84bu" path="res://Entities/shared components/attack_hitbox.tscn" id="3_5icqw"]
 [ext_resource type="Script" path="res://Entities/player/Score Manager.gd" id="4_wslj7"]
+[ext_resource type="PackedScene" uid="uid://c7g8eo1u6myeg" path="res://Entities/shared components/health.tscn" id="5_cr83o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yihr8"]
 size = Vector2(122, 120)
@@ -47,3 +48,7 @@ text = "0
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" parent="CanvasLayer" instance=ExtResource("5_cr83o")]
