@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 @export var speed = 200
-@export var backoff_range = 250 #the distance which the enemy begins to backoff.
+@export var backoff_range = 120 #the distance which the enemy begins to backoff.
 @export var attack_range = 20 #the distance which the enemy stays still and attacks. Added onto backoff_range
 
 @onready var global = get_node("/root/Global")
+@onready var _animation_player = $AnimationPlayer
 
 var player: Node2D = self
 var p_chase = false
@@ -16,10 +17,19 @@ var p_patrol = false
 func _physics_process(delta):
 	velocity = position.direction_to(global.player.position) * speed
 	
+	# go towards player
 	if position.distance_to(global.player.position) > backoff_range + attack_range:
+		_animation_player.play("walk")
 		move_and_slide()
-	elif position.distance_to(global.player.position) < backoff_range:
-		velocity = -velocity
-		move_and_slide()
+		
+
+	# @TODO if near player (attack range), then attack
 	else:
-		pass
+		_animation_player.play("attack")
+	
+	### Change direction of sprite based on mouse ###
+	look_at(global.player.position)
+	
+
+	
+	

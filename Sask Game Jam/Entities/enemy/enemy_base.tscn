@@ -1,19 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://8d05ffo6vcr7"]
+[gd_scene load_steps=7 format=3 uid="uid://8d05ffo6vcr7"]
 
-[ext_resource type="Texture2D" uid="uid://uc1up7h8m3g1" path="res://icon.svg" id="1_ha7ry"]
 [ext_resource type="Script" path="res://Entities/enemy/enemy components/enemy_move.gd" id="1_hevyo"]
+[ext_resource type="Texture2D" uid="uid://dkk1r0vrxqg1a" path="res://Entities/enemy/spider01.png" id="2_ey1bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l6q1"]
 size = Vector2(126, 120)
 
+[sub_resource type="Animation" id="Animation_m4lyj"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_shvm4"]
+resource_name = "walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfdlu"]
+_data = {
+"attack": SubResource("Animation_m4lyj"),
+"walk": SubResource("Animation_shvm4")
+}
+
 [node name="Enemy_base" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 2
+collision_priority = 2.0
 script = ExtResource("1_hevyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.14902, 0.337255, 1)
-texture = ExtResource("1_ha7ry")
-flip_v = true
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("2_ey1bl")
+hframes = 10
+vframes = 5
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8l6q1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nfdlu")
+}
