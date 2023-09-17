@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://mbacpcvfh6jr"]
-
-[ext_resource type="Script" path="res://Levels/Level_Parts/spawner.gd" id="1_au2nu"]
-
-[node name="Spawner" type="Node2D"]
-script = ExtResource("1_au2nu")
