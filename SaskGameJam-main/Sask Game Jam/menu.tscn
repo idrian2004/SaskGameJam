@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr6uqu2dfyrra"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_8a3es"]
+[ext_resource type="Texture2D" uid="uid://lotgy6qkv6na" path="res://gamepage.png" id="2_wmbkw"]
+[ext_resource type="Texture2D" uid="uid://b33oyrsvc371k" path="res://start_page-Start-new.png" id="3_8oblk"]
+[ext_resource type="Texture2D" uid="uid://xwwqok6tjk4b" path="res://start_page-Exit.png" id="4_lu4b6"]
+[ext_resource type="Texture2D" uid="uid://b4wlrcly62vqt" path="res://start_page-Credits.png" id="5_bdvcf"]
+[ext_resource type="AudioStream" uid="uid://dmfpf3r0twxk8" path="res://music/menu.mp3" id="6_h7kdt"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -88.0
+offset_right = -218.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.84484, 8.17423)
+script = ExtResource("1_8a3es")
+
+[node name="Gamepage" type="Sprite2D" parent="."]
+position = Vector2(190.253, 76.9899)
+scale = Vector2(0.12317, 0.0878643)
+texture = ExtResource("2_wmbkw")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 307.964
+offset_top = 101.783
+offset_right = 483.964
+offset_bottom = 172.783
+scale = Vector2(0.257018, 0.18276)
+icon = ExtResource("3_8oblk")
+flat = true
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 313.439
+offset_top = 117.442
+offset_right = 386.439
+offset_bottom = 151.442
+scale = Vector2(0.472168, 0.346495)
+icon = ExtResource("4_lu4b6")
+flat = true
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 0
+offset_left = 307.964
+offset_top = 130.165
+offset_right = 436.964
+offset_bottom = 165.165
+scale = Vector2(0.34101, 0.333961)
+icon = ExtResource("5_bdvcf")
+flat = true
+
+[node name="menu_bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_h7kdt")
+autoplay = true
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
