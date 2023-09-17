@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbecxuoi51enm"]
+[gd_scene load_steps=10 format=3 uid="uid://cbecxuoi51enm"]
 
 [ext_resource type="Texture2D" uid="uid://esirda8oorjy" path="res://Levels/background_pixelart.png" id="1_0xxd2"]
 [ext_resource type="PackedScene" uid="uid://dupqmjd8nnn8c" path="res://Entities/player/player.tscn" id="2_64i2y"]
@@ -10,27 +10,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4km6"]
 size = Vector2(354, 11616)
 
-[node name="Test_Level" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okuoc"]
+size = Vector2(384, 280)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8955.0
-offset_top = -5129.0
-offset_right = 8955.0
-offset_bottom = 5129.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on20u"]
+size = Vector2(312, 153)
+
+[node name="Test_Level" type="Node2D"]
 
 [node name="BackgroundPixelart" type="Sprite2D" parent="."]
 scale = Vector2(6, 6)
 texture = ExtResource("1_0xxd2")
 
 [node name="Score Zone" parent="." instance=ExtResource("4_4xpuy")]
+position = Vector2(696, -328)
 
 [node name="Player" parent="." instance=ExtResource("2_64i2y")]
 position = Vector2(-634, -164)
@@ -41,37 +34,142 @@ position = Vector2(-634, -164)
 position = Vector2(-346, 37)
 
 [node name="Spawner" parent="." instance=ExtResource("6_16leu")]
-position = Vector2(426, 90)
+position = Vector2(2912, -1128)
 spawn_time = 8
 
 [node name="Spawner2" parent="." instance=ExtResource("6_16leu")]
-position = Vector2(-1252, 90)
+position = Vector2(-5088, -2320)
+spawn_time = 8
+
+[node name="Spawner3" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(-2848, -2624)
+spawn_time = 8
+
+[node name="Spawner4" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(-712, -3064)
+spawn_time = 8
+
+[node name="Spawner5" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(1680, -2808)
+spawn_time = 8
+
+[node name="Spawner6" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(5120, -2960)
+spawn_time = 8
+
+[node name="Spawner7" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(5208, -1328)
+spawn_time = 8
+
+[node name="Spawner8" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(5152, 192)
+spawn_time = 8
+
+[node name="Spawner9" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(4400, 2456)
+spawn_time = 8
+
+[node name="Spawner10" parent="." instance=ExtResource("6_16leu")]
+position = Vector2(1528, 2672)
 spawn_time = 8
 
 [node name="Walls" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+[node name="Borders" type="Node2D" parent="Walls"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/Borders"]
 position = Vector2(-5912, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+[node name="ColorRect" type="ColorRect" parent="Walls/Borders/StaticBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2312.0
+offset_top = -5112.0
+offset_right = 15598.0
+offset_bottom = -3177.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00239456
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Borders/StaticBody2D"]
 shape = SubResource("RectangleShape2D_c4km6")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls/Borders"]
 position = Vector2(5907, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
+[node name="ColorRect" type="ColorRect" parent="Walls/Borders/StaticBody2D2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13187.0
+offset_top = 3240.0
+offset_right = 4723.0
+offset_bottom = 5175.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00239456
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Borders/StaticBody2D2"]
 shape = SubResource("RectangleShape2D_c4km6")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls/Borders"]
 position = Vector2(0, -3380)
 rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
+[node name="ColorRect" type="ColorRect" parent="Walls/Borders/StaticBody2D3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4180.0
+offset_top = 5744.0
+offset_right = 13730.0
+offset_bottom = 7679.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00239456
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Borders/StaticBody2D3"]
 shape = SubResource("RectangleShape2D_c4km6")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls/Borders"]
 position = Vector2(0, 3420)
 rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Borders/StaticBody2D4"]
 shape = SubResource("RectangleShape2D_c4km6")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Borders/StaticBody2D4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8404.0
+offset_top = -7648.0
+offset_right = 9506.0
+offset_bottom = -5713.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00239456
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+position = Vector2(480, -632)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(216, -20)
+shape = SubResource("RectangleShape2D_okuoc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(244, -235.5)
+shape = SubResource("RectangleShape2D_on20u")

@@ -10,7 +10,6 @@ var rng = RandomNumberGenerator.new()
 
 
 func _on_timer_timeout():
-	print("sfsd")
 	spawn_enemies()
 
 func spawn_enemies():

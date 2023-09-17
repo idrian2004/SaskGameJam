@@ -22,7 +22,6 @@ func timer_reset():
 
 func add_score(value):
 	score += value
-	print("add")
 
 func _on_timer_timeout():
 	if !timer_freeze:
